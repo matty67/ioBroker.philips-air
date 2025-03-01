@@ -501,7 +501,7 @@
         "type": "number",
         "read": true,
         "write": false,
-        "min": 1,
+        "min": 0,
         "max": 12
       },
       "native": {}
