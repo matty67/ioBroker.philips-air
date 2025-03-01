@@ -91,7 +91,8 @@ async function updateStatus(status) {
                 if (item.name === 'function') {
                     await adapter.setStateAsync('device.function', status[item.name] === 'humidification', true);
                 } else if (item.name === 'uptime') {
-                    await adapter.setStateAsync('device.uptime', status[item.name], true);
+                    await adapter.setStateAsync('device.uptime', Number(status[item.name]), true);
+                    //await adapter.setStateAsync('device.uptime', status[item.name], true);
                     const date = new Date();
                     date.setMilliseconds(date.getMilliseconds() - status[item.name]);
                     await adapter.setStateAsync('device.started', date.toISOString(), true);
@@ -104,7 +105,8 @@ async function updateStatus(status) {
                     }
                 }
             } else {
-                await adapter.setStateAsync(`status.${item.name}`, status[item.name], true);
+                await adapter.setStateAsync(`status.${item.name}`, Number(status[item.name]), true);
+                //await adapter.setStateAsync(`status.${item.name}`, status[item.name], true);
             }
         }
     }
